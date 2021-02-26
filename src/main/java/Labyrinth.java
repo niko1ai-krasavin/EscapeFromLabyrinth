@@ -8,18 +8,18 @@ public class Labyrinth {
     private final static char AIR = '.';
     private final static char WALL = '#';
 
-    private int numberOfLevels;
-    private int length;
-    private int width;
+    private byte numberOfLevels;
+    private byte length;
+    private byte width;
     private char[][][] mapOfLabyrinth;
     private HashSet<Coordinate> exploredCoordinates;
 
     //for coordinates from 'private void setXYZ(Coordinate coordinate)'
-    private int x;
-    private int y;
-    private int z;
+    private byte x;
+    private byte y;
+    private byte z;
 
-    public Labyrinth(int numberOfLabyrinthLevels, int lengthOfLabyrinth, int widthOfLabyrinth) {
+    public Labyrinth(byte numberOfLabyrinthLevels, byte lengthOfLabyrinth, byte widthOfLabyrinth) {
         numberOfLevels = numberOfLabyrinthLevels;
         length = lengthOfLabyrinth;
         width = widthOfLabyrinth;
@@ -54,9 +54,9 @@ public class Labyrinth {
     public Coordinate getStartPosition() {
         Coordinate coordinate = null;
 
-        for (int i = 0; i < mapOfLabyrinth.length; i++) {
-            for (int j = 0; j < mapOfLabyrinth[i].length; j++) {
-                for (int k = 0; k < mapOfLabyrinth[i][j].length; k++) {
+        for (byte i = 0; i < mapOfLabyrinth.length; i++) {
+            for (byte j = 0; j < mapOfLabyrinth[i].length; j++) {
+                for (byte k = 0; k < mapOfLabyrinth[i][j].length; k++) {
                     if (mapOfLabyrinth[i][j][k] == START_POSITION) {
                         coordinate = new Coordinate(k, j, i);
                     }
@@ -66,11 +66,11 @@ public class Labyrinth {
         return coordinate;
     }
 
-    public int getLength() { return length; }
+    public byte getLength() { return length; }
 
-    public int getWidth() { return width; }
+    public byte getWidth() { return width; }
 
-    public int getNumberOfLevels() { return numberOfLevels; }
+    public byte getNumberOfLevels() { return numberOfLevels; }
 
     public char[][][] getMapOfLabyrinth() { return mapOfLabyrinth; }
 

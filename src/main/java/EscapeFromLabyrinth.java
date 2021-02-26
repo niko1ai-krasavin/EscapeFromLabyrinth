@@ -22,8 +22,8 @@ public class EscapeFromLabyrinth {
         Labyrinth currentLabyrinth = null;
         char[][][] mapOfLabyrinth = null;
 
-        int currentLevel = 0;
-        int currentLength = 0;
+        byte currentLevel = 0;
+        byte currentLength = 0;
 
 
         try (FileReader fileReader = new FileReader(file);
@@ -39,9 +39,9 @@ public class EscapeFromLabyrinth {
 
                     String[] strArray = line.split("\\s");
 
-                    int levelOfLabyrinth = Integer.parseInt(strArray[0]);
-                    int lengthOfLabyrinth = Integer.parseInt(strArray[1]);
-                    int widthOfLabyrinth = Integer.parseInt(strArray[2]);
+                    byte levelOfLabyrinth = Byte.parseByte(strArray[0]);
+                    byte lengthOfLabyrinth = Byte.parseByte(strArray[1]);
+                    byte widthOfLabyrinth = Byte.parseByte(strArray[2]);
 
                     currentLabyrinth = new Labyrinth(levelOfLabyrinth, lengthOfLabyrinth, widthOfLabyrinth);
                     labyrinthList.add(currentLabyrinth);
@@ -58,7 +58,7 @@ public class EscapeFromLabyrinth {
 
                     currentLabyrinth = labyrinthList.get(labyrinthList.size() - 1);
 
-                    int width = currentLabyrinth.getWidth();
+                    byte width = currentLabyrinth.getWidth();
 
                     if (line.matches("\\S{" + width + "}")) {
                         mapOfLabyrinth[currentLevel][currentLength] = line.toCharArray();

@@ -1,38 +1,30 @@
 public final class Coordinate {
 
-    private int x; //width
-    private int y; //length
-    private int z; //level
+    private byte x; //width
+    private byte y; //length
+    private byte z; //level
     private Coordinate parentCoordinate;
 
-    public Coordinate(int x, int y, int z) {
+    public Coordinate(byte x, byte y, byte z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public Coordinate(int x, int y, int z, Coordinate parentCoordinate) {
+    public Coordinate(byte x, byte y, byte z, Coordinate parentCoordinate) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.parentCoordinate = parentCoordinate;
     }
 
-    public int getX() {
-        return x;
-    }
+    public byte getX() { return x; }
 
-    public int getY() {
-        return y;
-    }
+    public byte getY() { return y; }
 
-    public int getZ() {
-        return z;
-    }
+    public byte getZ() { return z; }
 
-    public Coordinate getParentCoordinate() {
-        return parentCoordinate;
-    }
+    public Coordinate getParentCoordinate() { return parentCoordinate; }
 
     @Override
     public boolean equals(Object o) {

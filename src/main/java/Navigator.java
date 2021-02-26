@@ -9,7 +9,7 @@ public class Navigator {
     private Labyrinth labyrinth;
     private Coordinate startPosition;
 
-    private final static int[][] DIRECTIONS = {
+    private final static byte[][] DIRECTIONS = {
             {1, 0, 0}, {0, 1, 0}, {-1, 0, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}
     };
 
@@ -58,11 +58,11 @@ public class Navigator {
                 continue;
             }
 
-            for (int[] direction : DIRECTIONS) {
+            for (byte[] direction : DIRECTIONS) {
                 Coordinate coordinate = new Coordinate(
-                        current.getX() + direction[0],
-                        current.getY() + direction[1],
-                        current.getZ() + direction[2],
+                        (byte)(current.getX() + direction[0]),
+                        (byte)(current.getY() + direction[1]),
+                        (byte)(current.getZ() + direction[2]),
                         current
                 );
 
