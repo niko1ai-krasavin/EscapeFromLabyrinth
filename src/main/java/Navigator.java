@@ -9,13 +9,16 @@ public class Navigator {
     private Labyrinth labyrinth;
     private Coordinate startPosition;
 
-    private static int[][] DIRECTIONS = {{1, 0, 0}, {0, 1, 0}, {-1, 0, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}};
+    private final static int[][] DIRECTIONS = {
+            {1, 0, 0}, {0, 1, 0}, {-1, 0, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}
+    };
+
 
     public void findWayOut(Labyrinth labyrinth) {
         if (labyrinth != null) {
             ready(labyrinth);
 
-            List<Coordinate> wayOut = goToFindWayOut();
+            List<Coordinate> wayOut = getWayOut();
 
             int result = wayOut.size() - 1;
             if (result >= 1) {
@@ -29,7 +32,7 @@ public class Navigator {
         startPosition = labyrinth.getStartPosition();
     }
 
-    private List<Coordinate> goToFindWayOut() {
+    private List<Coordinate> getWayOut() {
         LinkedList<Coordinate> queueOfCoordinates = new LinkedList<>();
         if (startPosition != null) {
             queueOfCoordinates.add(startPosition);
@@ -73,10 +76,11 @@ public class Navigator {
     }
 
     private boolean isValidCoordinate(Coordinate coordinate) {
-        return (coordinate.getX() < labyrinth.getWidth()
-                && coordinate.getY() < labyrinth.getLength()
-                && coordinate.getZ() < labyrinth.getNumberOfLevels()
-        ) && (coordinate.getX() >= 0 && coordinate.getY() >= 0 && coordinate.getZ() >= 0);
+        boolean isX_Valid = coordinate.getX() >= 0 && coordinate.getX() < labyrinth.getWidth();
+        boolean isY_Valid = coordinate.getY() >= 0 && coordinate.getY() < labyrinth.getLength();
+        boolean isZ_Valid = coordinate.getZ() >= 0 && coordinate.getZ() < labyrinth.getNumberOfLevels();
+
+        return isX_Valid && isY_Valid && isZ_Valid;
     }
 
     private List<Coordinate> getTrackToExit(Coordinate endCoordinate) {
