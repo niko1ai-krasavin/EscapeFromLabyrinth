@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EscapeFromLabyrinth {
 
-    public static List<Labyrinth> getLabyrinthsFromFile(File file) {
+    private static List<Labyrinth> getLabyrinthsFromFile(File file) {
 
         List<Labyrinth> labyrinthList = new ArrayList<>();
         Labyrinth currentLabyrinth = null;
@@ -77,7 +77,10 @@ public class EscapeFromLabyrinth {
 
         File file = new File("input.txt");
 
-        getLabyrinthsFromFile(file);
+        List<Labyrinth> labyrinthList = getLabyrinthsFromFile(file);
 
+        for (Labyrinth labyrinth : labyrinthList) {
+            new Navigator().findWayOut(labyrinth);
+        }
     }
 }
